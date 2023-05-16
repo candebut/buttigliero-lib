@@ -1,4 +1,5 @@
 import React from "react";
+import { constants } from '../../constants/constants';
 import './Button.scss';
 
 export interface ButtonProps {
@@ -6,7 +7,7 @@ export interface ButtonProps {
   variant: string;
 }
 
-const Button = ({label, variant = 'primary'}: ButtonProps) => {
+const Button = ({label, variant = constants.primary}: ButtonProps) => {
   return <div className='button-wrapper'><button className={`button-component__${variant}`}>{label}</button></div>;
 };
 
