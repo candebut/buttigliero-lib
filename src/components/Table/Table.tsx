@@ -1,30 +1,34 @@
-import React from 'react';
-import { TableHeader, TableRows } from './components'
+import React from "react";
 
-type ColumnDefinitionType<T, K extends keyof T> = {
-    key: K;
-    header: string;
-    width?: number;
+interface IObjectKeys {
+  [key: string]: string | number | undefined;
 }
 
-type TableProps<T, K extends keyof T> = {
-  data: Array<T>;
-  columns: Array<ColumnDefinitionType<T, K>>;
+export interface TableProps {
+  headers: Array<string>;
+  data: Array<DataContent>;
 }
 
-const style = {
-  borderCollapse: 'collapse'
-} as const
+export interface DataContent extends IObjectKeys {
+  text: string;
+  id: number;
+}
 
-const Table = <T, K extends keyof T>({ data, columns }: TableProps<T, K>): JSX.Element => {
+const Table = ({ headers, data }: TableProps) => {
   return (
-    <table style={style}>
-      <TableHeader columns={columns} />
-      <TableRows
-        data={data}
-        columns={columns}
-      />
-    </table>
+    <tbody>
+      {data.map((d, index) => (
+        <tr key={`tr-${index}-${d.id}`}>
+          <>
+            {Object.keys(headers).map((header, index) => {
+              <td key={`td-${index}`}>
+                <span>{d[header]}</span>
+              </td>;
+            })}
+          </>
+        </tr>
+      ))}
+    </tbody>
   );
 };
 
