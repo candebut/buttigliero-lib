@@ -1,0 +1,76 @@
+// $colors: (
+//     'PRIMARY_TURQOISE' : '#4CCFE2',
+//     'PRIMARY_TURQOISE_HOVER' : '#40BED7',
+//     'PRIMARY_PURPLE' : '#93A2DD',
+//     'PRIMARY_PURPLE_HOVER' : '#8B99CF',
+//     'PRIMARY_BLUE' : '#5D78FF',
+//     'PRIMARY_BLUE_HOVER' : '#586BB5',
+    
+//     // LIGHT COLORS
+//     'LIGHT_TURQOISE' : '#DFF9FD',
+//     'LIGHT_ORANGE' : '#FFECC3',
+//     'LIGHT_RED' : '#FDDFE8',
+//     'LIGHT_GREEN' : '#DFFDE6',
+//     'LIGHT_GRASS_GREEN' : '#EEFDDF',
+//     'LIGHT_GREY' : '#EBEDF2',
+//     'LIGHT_ICE_BLUE' : '#F5FAFF',
+//     'LIGHT_CHARCOAL_GREY' : '#F0F1F5',
+//     'LIGHT_BLUE_GREY' : '#EBF1F6',
+    
+//     // VIVID COLORS
+//     'ORANGE' : '#F7941D',
+//     'RED' : '#FF3061',
+//     'GREEN' : '#99BE6A',
+//     'YELLOW' : '#FFB822',
+    
+//     // MID/DARK COLORS
+//      'ALMOST_BLACK' '#212529',
+//      'DARK_GREY' '#80849B',
+//      'MID_GREY' '#B2B9CD',
+//      'DARK_BLUE' '#364C8D',
+//      'DARK_GREEN' '#27B34B',
+//      'DARK_TURQOISE' '#028698',
+    
+//     // NEUTRAL
+//     'WHITE' '#ffffff',
+//      'BLACK' '#000000',
+    
+//     // NOT NAMED YET
+//      'LIGHTER_BLUE' '#A2C0DF',
+//      'VERY_LIGHT_GREY' '#fafcff',
+//      'LIGHTER_GREY' '#b1b3ba',
+//      'LIGHTEST_GREY' '#f4f5f8',
+//      'DARKER_GREY' '#9093A7',
+//      'DARKEST_GREY' '#575962',
+//      'ALTERNATIVE_BLUE' '#387FC9',
+// );
+
+$PRIMARY_TURQOISE: '#4CCFE2';
+$PRIMARY_PURPLE: '#93A2DD';
+
+
+
+
+.button-wrapper {
+    position: relative;
+    display: inline-block;
+    width: auto;
+
+    .button-component {
+    font-family: Poppins;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 200ms;
+
+    &-primary {
+        color: $PRIMARY_TURQOISE
+    };
+    &-secundary {
+        color: $PRIMARY_PURPLE
+    };
+    }
+
+}
