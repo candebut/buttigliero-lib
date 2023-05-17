@@ -1,34 +1,58 @@
-import React from "react";
+import './table.scss';
+import React from 'react';
 
-interface IObjectKeys {
-  [key: string]: string | number | undefined;
-}
+export type TableElement = {};
 
-export interface TableProps {
-  headers: Array<string>;
-  data: Array<DataContent>;
-}
+export type TableColumn<T extends TableElement> = {
+  title: string;
+  html: (e: T) => JSX.Element;
+  width?: number;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+};
 
-export interface DataContent extends IObjectKeys {
-  text: string;
-  id: number;
-}
+export type TableModel<T extends TableElement> = {
+  columns: TableColumn<T>[];
+};
 
-const Table = ({ headers, data }: TableProps) => {
+export type Props<T extends TableElement> = {
+  model: TableModel<T>;
+  elements: T[];
+};
+
+const Table = <T extends TableElement>({ model, elements }: Props<T>) => {
+  const sumWidth = model.columns.reduce((sum, column) => sum + (column.width || 1), 0);
+  const widthOf = (c: TableColumn<T>) => ((c.width || 1) / sumWidth) * 100;
   return (
-    <tbody>
-      {data.map((d, index) => (
-        <tr key={`tr-${index}-${d.id}`}>
-          <>
-            {Object.keys(headers).map((header, index) => {
-              <td key={`td-${index}`}>
-                <span>{d[header]}</span>
-              </td>;
-            })}
-          </>
-        </tr>
-      ))}
-    </tbody>
+    <div className="genericTableContainer">
+      <div className="genericTableHeader">
+        <div className="genericTableRow">
+          {model.columns.map((c, index) => (
+            <div key={`key-column-${index}`} className="genericTableCell" style={{ width: `${widthOf(c)}%` }}>
+              <span className="genericTableCellText">{c.title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="genericTableBody">
+        {elements.map((e, index) => (
+          <div className="genericTableRow" key={`key-element-${index}`} data-test-id="table-row">
+            {
+              // eslint-disable-next-line react/jsx-no-target-blank
+              model.columns.map((c, index) => (
+                // eslint-disable-next-line react/jsx-no-target-blank
+                <div
+                  className="genericTableCell"
+                  style={{ width: `${widthOf(c)}%` }}
+                  key={`key-element-column-${index}`}
+                >
+                  {c.html(e)}
+                </div>
+              ))
+            }
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

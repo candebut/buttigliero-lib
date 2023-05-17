@@ -1,3 +1,5 @@
-export const constants = {
- primary: 'primary'   
-}
+export const CONSTANTS = {
+  PRIMARY: 'primary',
+  SECUNDARY: 'secundary',
+  LOADING: 'Loading...',
+};

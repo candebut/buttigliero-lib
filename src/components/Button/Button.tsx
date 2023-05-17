@@ -1,6 +1,5 @@
-import React from "react";
-import { constants } from "../../constants/constants";
-import "../../styles/scss/_button.scss";
+import React from 'react';
+import './button.scss';
 
 export interface ButtonProps {
   label: string;
@@ -8,15 +7,12 @@ export interface ButtonProps {
   onClick?: React.MouseEventHandler;
 }
 
-const Button = ({ label, variant = constants.primary }: ButtonProps) => {
-  const onClick = () => {
-    if (onClick) {
-      onClick();
-    }
-  };
+const Button = ({ label, variant = 'primary', onClick }: ButtonProps) => {
   return (
-    <div className="button-wrapper">
-      <button className={`button-component__${variant}`}>{label}</button>
+    <div className="buttonWrapper">
+      <button onClick={onClick} className={`button-component ${variant}`}>
+        {label}
+      </button>
     </div>
   );
 };
