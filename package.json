@@ -1,5 +1,8 @@
 {
-  "name": "buttigliero-lib",
+  "name": "@candebut/buttigliero-candela-lib",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/candebut"
+  },
   "version": "1.0.0",
   "scripts": {
     "rollup": "rollup -c",
