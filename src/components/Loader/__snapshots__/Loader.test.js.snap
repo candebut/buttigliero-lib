@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader: snapshot tests should render correctly in primary variant 1`] = `
+<div
+  className="loaderWrapper"
+>
+  <div
+    className="loaderComponent"
+  >
+    Loading test
+  </div>
+</div>
+`;
