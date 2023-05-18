@@ -1,5 +1,5 @@
-import './loader.scss';
 import React from 'react';
+import './loader.scss';
 
 type Props = {
   children: string | JSX.Element | JSX.Element[];
@@ -7,7 +7,7 @@ type Props = {
 
 function Loader({ children }: Props) {
   return (
-    <div className="loaderWrapper">
+    <div className="loaderWrapper" data-testid="loader" data-cy="loader">
       <div className="loaderComponent">{children}</div>
     </div>
   );

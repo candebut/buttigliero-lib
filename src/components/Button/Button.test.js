@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from './Button';
 import { shallow, mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -18,11 +20,7 @@ describe('Button: snapshot tests', () => {
   });
 });
 
-// describe('Button: callbacks', () => {
-//   it('Test onClick event', () => {
-//     const mockCallBack = jest.fn();
-//     const button = mount(<Button onClick={mockCallBack}>Click me!</Button>);
-//     button.find('button').simulate('click');
-//     expect(mockCallBack.mock.calls.length).toEqual(1);
-//   });
-// });
+test('renders the button', async () => {
+  render(<Button />);
+  expect(screen.getByTestId('button-component')).toBeInTheDocument();
+});

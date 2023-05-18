@@ -1,5 +1,4 @@
 import './table.scss';
-import React from 'react';
 
 export type TableElement = {};
 
@@ -23,7 +22,7 @@ const Table = <T extends TableElement>({ model, elements }: Props<T>) => {
   const sumWidth = model.columns.reduce((sum, column) => sum + (column.width || 1), 0);
   const widthOf = (c: Column<T>) => ((c.width || 1) / sumWidth) * 100;
   return (
-    <div className="genericTableContainer">
+    <div className="genericTableContainer" data-testid="genericTable" data-cy="genericTable">
       <div className="genericTableHeader">
         <div className="genericTableRow">
           {model.columns.map((c, index) => (
@@ -35,9 +34,14 @@ const Table = <T extends TableElement>({ model, elements }: Props<T>) => {
       </div>
       <div className="genericTableBody">
         {elements.map((e, index) => (
-          <div className="genericTableRow" key={`key-element-${index}`}>
+          <div className="genericTableRow" key={`key-element-${index}`} data-cy="genericTableRow">
             {model.columns.map((c, index) => (
-              <div className="genericTableCell" style={{ width: `${widthOf(c)}%` }} key={`key-element-column-${index}`}>
+              <div
+                data-cy="genericTableCell"
+                className="genericTableCell"
+                style={{ width: `${widthOf(c)}%` }}
+                key={`key-element-column-${index}`}
+              >
                 {c.html(e)}
               </div>
             ))}
